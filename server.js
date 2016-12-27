@@ -689,7 +689,7 @@ app.get("/game/:gameKey", gameHandler(function (game, req, res, next) {
 
 app.post("/game/:gameKey", playerHandler(function(player, game, req, res) {
     var body = icebox.thaw(req.body);
-    console.log('put', game.key, 'player', player.name, 'command', body.command, 'arguments', req.body.arguments);
+    console.log('put', game.key, 'player', player.name, 'command', body.command, 'body', body, 'arguments', req.body.arguments);
     var tilesAndTurn;
     switch (req.body.command) {
     case 'makeMove':

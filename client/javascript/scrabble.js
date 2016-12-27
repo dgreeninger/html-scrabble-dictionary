@@ -726,6 +726,7 @@ function calculateMove(squares)
                     wordScore *= wordMultiplier;
                     if (isNewWord) {
                         move.words.push({ word: letters, score: wordScore });
+                        console.log(letters.toLowercase())
                         score += wordScore;
                     }
                 }
