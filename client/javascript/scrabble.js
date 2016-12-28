@@ -615,10 +615,13 @@ function calculateMove(squares)
         //console.log(array);
         if (array.indexOf(word) > -1) {
             console.log('word found');
+            result = true;
         }
         else {
+            result = word + ' is not a word!';
             console.log('word not found');
         }
+        return result;
     }
     // Determine that the placement of the Tile(s) is legal
 
@@ -737,7 +740,10 @@ function calculateMove(squares)
                     wordScore *= wordMultiplier;
                     if (isNewWord) {
                         move.words.push({ word: letters, score: wordScore });
-                        dictionaryLookup(letters.toLowercase());
+                        checkWord = dictionaryLookup(letters.toLowercase());
+			if ( checkWord != true ) {
+			    alert(checkWord);
+                        
                         score += wordScore;
                     }
                 }
