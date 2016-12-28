@@ -611,12 +611,11 @@ function calculateMove(squares)
     }
 
     function dictionaryLookup(word){
-	var result;
-	result = word;
-        var array = fs.readFileSync('dictionary/sowpods.txt').toString().split("\n");
+	var result = word;
+        //var array = fs.readFileSync('./client/javascript/dictionary/sowpods.txt').toString().split("\n");
 	//var result;
         console.log(word);
-        console.log(array);
+        //console.log(array);
         //if (array.indexOf(word) > -1) {
         //    console.log('word found');
         //    result = true;
