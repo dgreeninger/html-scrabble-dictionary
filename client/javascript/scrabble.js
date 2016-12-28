@@ -608,9 +608,20 @@ function calculateMove(squares)
     if (!squares[7][7].tile) {
         return { error: "start field must be used" };
     }
-    
+
+    function dictionaryLookup(word){
+        var fs = require('fs');
+        var array = fs.readFileSync('dictionary/sowpods.txt').toString().split("\n");
+        //console.log(array);
+        if (array.indexOf(word) > -1) {
+            console.log('word found');
+        }
+        else {
+            console.log('word not found');
+        }
+    }
     // Determine that the placement of the Tile(s) is legal
-    
+
     // Find top-leftmost placed tile
     var x;
     var y;
@@ -726,7 +737,7 @@ function calculateMove(squares)
                     wordScore *= wordMultiplier;
                     if (isNewWord) {
                         move.words.push({ word: letters, score: wordScore });
-                        console.log(letters.toLowercase())
+                        dictionaryLookup(letters.toLowercase());
                         score += wordScore;
                     }
                 }
