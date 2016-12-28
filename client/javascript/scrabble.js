@@ -1,5 +1,6 @@
 if (typeof exports == 'object') {
     _ = require('underscore');
+    fs = require('fs');
 }
 
 /*
@@ -610,17 +611,20 @@ function calculateMove(squares)
     }
 
     function dictionaryLookup(word){
-        var fs = require('fs');
+	var result;
+	result = word;
         var array = fs.readFileSync('dictionary/sowpods.txt').toString().split("\n");
-        //console.log(array);
-        if (array.indexOf(word) > -1) {
-            console.log('word found');
-            result = true;
-        }
-        else {
-            result = word + ' is not a word!';
-            console.log('word not found');
-        }
+	//var result;
+        console.log(word);
+        console.log(array);
+        //if (array.indexOf(word) > -1) {
+        //    console.log('word found');
+        //    result = true;
+        //}
+        //else {
+        //    result = word + ' is not a word!';
+        //    console.log('word not found');
+        //}
         return result;
     }
     // Determine that the placement of the Tile(s) is legal
@@ -740,10 +744,15 @@ function calculateMove(squares)
                     wordScore *= wordMultiplier;
                     if (isNewWord) {
                         move.words.push({ word: letters, score: wordScore });
-                        checkWord = dictionaryLookup(letters.toLowercase());
-			if ( checkWord != true ) {
-			    alert(checkWord);
-                        
+			var word;
+			var checkWord;
+			word = letters.toLowerCase();
+                        checkWord = dictionaryLookup(word);
+			console.log(word);
+			console.log(checkWord);
+			//if ( checkWord != true ) {
+			//    alert(checkWord);
+                        //}
                         score += wordScore;
                     }
                 }
