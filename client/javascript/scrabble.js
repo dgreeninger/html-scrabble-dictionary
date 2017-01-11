@@ -268438,6 +268438,8 @@ function calculateMove(squares)
     }
 
     var move = { words: [] };
+    var dictionary_error = '';
+    var error_output = '';
 
     // The move was legal, calculate scores
     function horizontalWordScores(squares) {
@@ -268471,20 +268473,21 @@ function calculateMove(squares)
                         }
                         wordScore += letterScore;
                         letters += square.tile.letter;
+			
                     }
-		    //console.log('Client word' + letters);
+		    console.log('Client word' + letters);
 		    var lword = letters.toLowerCase();
-		    //console.log('Client word' + lword);
+		    console.log('Client word' + lword);
 		    if (sowpods.indexOf(lword) > -1) {
 			    //console.log( lword + 'word found');
 			    //var result = true;
 		    }
 		    else {
 			    //var result = lword + ' is not a word!';
-        		    return score = lword + ' is not a word';
-			    //console.log( lword + 'lword not found');
-			}
-                    wordScore *= wordMultiplier;
+			    dictionary_error = lword + ' is not a word';
+			    console.log(dictionary_error);
+		    }
+		    wordScore *= wordMultiplier;
                     if (isNewWord) {
                         move.words.push({ word: letters, score: wordScore });
                         score += wordScore;
@@ -268492,14 +268495,13 @@ function calculateMove(squares)
                 }
             }
         }
+
         return score;
     }
     
 
     move.score = horizontalWordScores(squares);
-    if(typeof move.score != 'number'){
-        return { error: move.score };
-    }
+    
     // Create rotated version of the board to calculate vertical word scores.
     var rotatedSquares = MakeBoardArray();
     for (var x = 0; x < 15; x++) {
@@ -268508,7 +268510,9 @@ function calculateMove(squares)
         }
     }
     move.score += horizontalWordScores(rotatedSquares);
-
+    if( dictionary_error != ''){
+        return { error: dictionary_error };
+    }
     // Collect and count tiles placed.
     var tilesPlaced = [];
     for (var x = 0; x < 15; x++) {
