@@ -268474,14 +268474,14 @@ function calculateMove(squares)
                     }
 		    //console.log('Client word' + letters);
 		    var lword = letters.toLowerCase();
-		    console.log('Client word' + lword);
+		    //console.log('Client word' + lword);
 		    if (sowpods.indexOf(lword) > -1) {
 			    //console.log( lword + 'word found');
-			    var result = true;
+			    //var result = true;
 		    }
 		    else {
 			    //var result = lword + ' is not a word!';
-        		    return score = lword + 'is not a word';
+        		    return score = lword + ' is not a word';
 			    //console.log( lword + 'lword not found');
 			}
                     wordScore *= wordMultiplier;

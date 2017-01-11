@@ -246,18 +246,6 @@ Game.prototype.ensurePlayerAndGame = function(player) {
 }
 
 Game.prototype.makeMove = function(player, placementList) {
-	//console.log('makeMove', placementList);
-    //var word = '';
-	//placementList.forEach(function(value){
-	//			word += value.letter;
-	//		});
-	//var valid_word = dictionaryLookup(word);
-    //console.log('Valid Word says ' + valid_word);
-    //var game = this;
-	//if (valid_word != true){
-	//console.log(valid_word);
-    ////	throw word + ' is not found in sowpods.';
-	//}
     // validate the move (i.e. does the user have the tiles placed, are the tiles free on the board
     var rackSquares = player.rack.squares.slice();          // need to clone
     var turn;
