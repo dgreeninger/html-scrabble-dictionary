@@ -246,6 +246,10 @@ Game.prototype.ensurePlayerAndGame = function(player) {
 }
 
 Game.prototype.makeMove = function(player, placementList) {
+    console.log('makeMove', placementList);
+
+    var game = this;
+
     // validate the move (i.e. does the user have the tiles placed, are the tiles free on the board
     var rackSquares = player.rack.squares.slice();          // need to clone
     var turn;
@@ -641,22 +645,6 @@ function gameHandler(handler) {
         }
         handler(game, req, res);
     }
-}
-
-function dictionaryLookup(word){
-	var lword = word.toLowerCase();
-	var array = fs.readFileSync('./client/javascript/dictionary/sowpods.txt').toString().split("\n");
-	//console.log(lword);
-	//console.log(array);
-	if (array.indexOf(lword) > -1) {
-	    //console.log( lword + 'word found');
-	    var result = true;
-	}
-	else {
-	    var result = lword + ' is not a word!';
-	    //console.log( lword + 'lword not found');
-	}
-	return result;
 }
 
 function playerHandler(handler) {
