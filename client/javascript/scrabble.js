@@ -268438,7 +268438,7 @@ function calculateMove(squares)
     }
 
     var move = { words: [] };
-
+    var dictionary_error = '';
     // The move was legal, calculate scores
     function horizontalWordScores(squares) {
         var score = 0;
@@ -268472,17 +268472,17 @@ function calculateMove(squares)
                         wordScore += letterScore;
                         letters += square.tile.letter;
                     }
-		    //console.log('Client word' + letters);
+		    console.log('Client word' + letters);
 		    var lword = letters.toLowerCase();
-		    //console.log('Client word' + lword);
+		    console.log('Client word' + lword);
 		    if (sowpods.indexOf(lword) > -1) {
 			    //console.log( lword + 'word found');
 			    //var result = true;
 		    }
 		    else {
 			    //var result = lword + ' is not a word!';
-        		    return score = lword + ' is not a word';
-			    //console.log( lword + 'lword not found');
+        		    dictionary_error = lword + ' is not a word';
+			    console.log(dictionary_error);
 			}
                     wordScore *= wordMultiplier;
                     if (isNewWord) {
@@ -268492,14 +268492,20 @@ function calculateMove(squares)
                 }
             }
         }
+	console.log(score);
         return score;
     }
-    
+    if (dictionary_error != '') {
+        var error_output = dictionary_error;
+        dictionary_error = '';
+        return { error: error_output}
+    }
 
     move.score = horizontalWordScores(squares);
-    if(typeof move.score != 'number'){
-        return { error: move.score };
-    }
+    
+    //if(typeof move.score != 'number'){
+    //    return { error: move.score };
+    //}
     // Create rotated version of the board to calculate vertical word scores.
     var rotatedSquares = MakeBoardArray();
     for (var x = 0; x < 15; x++) {
