@@ -268471,6 +268471,7 @@ function calculateMove(squares)
                         }
                         wordScore += letterScore;
                         letters += square.tile.letter;
+			
                     }
 		    console.log('Client word' + letters);
 		    var lword = letters.toLowerCase();
@@ -268481,10 +268482,10 @@ function calculateMove(squares)
 		    }
 		    else {
 			    //var result = lword + ' is not a word!';
-        		    dictionary_error = lword + ' is not a word';
+			    dictionary_error = lword + ' is not a word';
 			    console.log(dictionary_error);
-			}
-                    wordScore *= wordMultiplier;
+		    }
+		    wordScore *= wordMultiplier;
                     if (isNewWord) {
                         move.words.push({ word: letters, score: wordScore });
                         score += wordScore;
@@ -268492,7 +268493,6 @@ function calculateMove(squares)
                 }
             }
         }
-	console.log(score);
         return score;
     }
     if (dictionary_error != '') {
@@ -268503,9 +268503,6 @@ function calculateMove(squares)
 
     move.score = horizontalWordScores(squares);
     
-    //if(typeof move.score != 'number'){
-    //    return { error: move.score };
-    //}
     // Create rotated version of the board to calculate vertical word scores.
     var rotatedSquares = MakeBoardArray();
     for (var x = 0; x < 15; x++) {
@@ -268514,7 +268511,9 @@ function calculateMove(squares)
         }
     }
     move.score += horizontalWordScores(rotatedSquares);
-
+    if( dictionary_error != ''){
+        return { error: dictionary_error };
+    }
     // Collect and count tiles placed.
     var tilesPlaced = [];
     for (var x = 0; x < 15; x++) {
