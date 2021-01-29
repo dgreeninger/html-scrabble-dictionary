@@ -26,7 +26,7 @@ want to keep it that way.
 ## Features
 
 * Two to four players
-* German, English, Czech, Hungarian, French and Dutch letter sets
+* Czech, English, Estonian, French, German, Hungarian and Dutch letter sets
 * Written in JavaScript, runs in browser
 * Scalable user interface
 * Desktop notification support
@@ -140,6 +140,10 @@ $ node server.js
 ```
 
 Open your web browser on the configured game URL to create a new game.
+
+## Deleting a game
+
+    jq -c 'select(.key != "b657b5d33a7736b0")' data.db | sponge data.db
 
 If you have trouble getting the server to run, feel free to contact
 me.  Be aware, though, that you will need a machine to run the server
