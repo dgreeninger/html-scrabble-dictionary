@@ -1050,7 +1050,10 @@ UI.prototype.commitMove = function() {
             return;
         }
         this.endMove();
-        if (move.tilesPlaced.length == 7) {
+        //if (move.tilesPlaced.length == 7) {
+        console.log(move.tilesPlaced.length)
+        if (move.tilesPlaced.length > 3) {
+            console.log("PLAYING SONG")
             ui.playAudio("applause");
         }
         for (var i = 0; i < move.tilesPlaced.length; i++) {

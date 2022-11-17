@@ -7,4 +7,4 @@ services:
     ports:
      - "4000:9093"
     volumes:
-     - .:/code
+     - .:/usr/src/app
