@@ -72,7 +72,7 @@ console.log('config', config);
 
 // //////////////////////////////////////////////////////////////////////
 
-var smtp = nodemailer.createTransport('SMTP', config.mailTransportConfig);
+//var smtp = nodemailer.createTransport('SMTP', config.mailTransportConfig);
 
 var app = express();
 var server = app.listen(config.port)

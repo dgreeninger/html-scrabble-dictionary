@@ -92,16 +92,16 @@ div#move {
 }
 
 div#chat {
-    height: 6em;
+    height: 20em;
 }
 
 div#chatLog {
     font-size: 0.8em;
     overflow: auto;
     margin-left: 5%;
-    border-width: 1em;
+    border-width: 4em;
     width: 98%;
-    height: 4em;
+    height: 21em;
 }
 
 div#messageInput {
