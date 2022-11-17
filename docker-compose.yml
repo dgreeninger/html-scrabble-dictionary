@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  html-scrabble-dictionary:
+    build: .
+    restart: always
+    ports:
+     - "4000:9093"
+    volumes:
+     - .:/code
