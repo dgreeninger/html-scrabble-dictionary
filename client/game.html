@@ -32,7 +32,6 @@
       @import "css/game.css";
     </style>
 
-    <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
     <script type="text/javascript" src="/javascript/MochiKit/MochiKit.js"></script>
     <script type="text/javascript" src="/javascript/underscore.js"></script>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
@@ -66,7 +65,7 @@
     <audio id="applause" src="audio/applause.wav" preload="auto" type="audio/wav"></audio>
 
     <div id="container">
-      <div id="controls" >
+      <div id="controls">
         <div id="log"></div>
         <div id="scoreboard"></div>
         <div id="chat">
@@ -86,9 +85,7 @@
       </div>
       <div id="boardWrap">
         <div id="board" class="tableDivWrap surroundShade"></div>
-        <div id="rack" onmouseup="party.confetti(this)" class="tableDivWrap bottomShade"></div>
-        <div id="message"  style="color:white;size:5em;">BIRTHDAY MODE ENABLED!</div>
-
+        <div id="rack" class="tableDivWrap bottomShade"></div>
         <div id="letters" class="tableDivWrap" style="display:none;"></div>
       </div>
       <div id="blankLetterRequester">
