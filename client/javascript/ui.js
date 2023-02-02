@@ -154,7 +154,7 @@ function UI(game) {
                                          player.name + ' gained ' + player.tallyScore + ' points from racks of the other players'));
                 } else {
                     $('#log').append(DIV({ 'class': 'gameEndScore' },
-                                         player.name + ' lost ' + -player.tallyScore + ' points for his rack containing the letters '
+                                         player.name + ' lost ' + -player.tallyScore + ' points for their rack containing the letters '
                                          + _.without(player.rack.squares.map(function (square) {
                                              if (square.tile) {
                                                  return square.tile.letter;
@@ -193,7 +193,7 @@ function UI(game) {
                 $('#turnControls').css('display', 'block');
             } else if (typeof playerNumber == 'number') {
                 var name = ui.players[playerNumber].name;
-                $('#whosturn').empty().text(name + "'" + ((name.charAt(name.length - 1) == 's') ? '' : 's') + " turn");
+                $('#whosturn').empty().text(name.trim()+ "'" + ((name.charAt(name.length - 1) == 's') ? '' : 's') + " turn");
                 $('#turnControls').css('display', 'none');
             } else {
                 $('#whosturn').empty();
