@@ -592,7 +592,42 @@ app.get("/games",
                                   })};
                      }));
 });
-
+app.get("/finished-games",
+        config.gameListLogin ? gameListAuth : function (req, res, next) { next(); },
+        function(req, res) {
+            res.send(db
+                     .all()
+                     .filter(function (game) {
+                         return game.endMessage;
+                     })
+                     .map(function (game) {
+                         var winner;
+                         var winning_score;
+                         if (game.players[0].score > game.players[1].score) {
+                           winner = game.players[0].name
+                           winning_score = game.players[0].score
+                         }
+                         else {
+                           winner = game.players[1].name
+                           winning_score = game.players[1].score
+                         }
+                         return { key: game.key,
+                                  everything: game,
+                                  p0: game.players[0].name,
+                                  p0_score: game.players[0].score,
+                                  p1: game.players[1].name,
+                                  p1_score: game.players[1].score,
+                                  winner: winner,
+                                  winning_score: winning_score,
+                                  players: game.players.map(function(player) {
+                                      return { name: player.name,
+                                               email: player.email,
+                                               key: player.key,
+                                               hasTurn: player == game.players[game.whosTurn]};
+                                  })};
+                     })
+            );
+});
 app.post("/send-game-reminders", function (req, res) {
     var count = 0;
     db.all().map(function (game) {
