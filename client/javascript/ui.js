@@ -221,7 +221,7 @@ function UI(game) {
 
         if (lastTurn && (lastTurn.type == 'move')) {
             if (yourTurn) {
-                ui.addChallengeButton();
+                //ui.addChallengeButton();
             } else if (lastTurn.player == ui.playerNumber) {
                 ui.addTakeBackMoveButton();
             }
@@ -311,7 +311,7 @@ function UI(game) {
                     if (turn.whosTurn == ui.playerNumber && turn.type != 'takeBack') {
                         ui.notify('Your turn!', ui.players[turn.player].name + ' has made a move and now it is your turn.');
                         if (turn.type == 'move') {
-                            ui.addChallengeButton();
+                            //ui.addChallengeButton();
                         }
                     }
                 }
